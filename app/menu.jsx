@@ -4,11 +4,9 @@ import Icon from '../assets/icons'
 import { theme } from '../constants/theme'
 import { wp, hp } from '../helpers/common'
 import { ParametersContext } from '../context/ParametersContext'
-import { useRouter } from 'expo-router'
 
-const Menu = () => {
+const Menu = ({ navigation }) => {
 
-    const router = useRouter();
     const { selectedFrio, setSelectedFrio, selectedCamara, setSelectedCamara, resetParameters } = useContext(ParametersContext);
 
     const handleLogout = () => {
@@ -27,23 +25,23 @@ const Menu = () => {
         // Usar setTimeout para asegurar que el contexto se actualice antes de navegar
         setTimeout(() => {
             // Navegar a welcome en lugar de directamente a login para restablecer el flujo
-            router.replace('/welcome');
+            navigation.replace('Welcome');
         }, 100);
     };
 
     const handleValidation = () => {
         // Redirigir a la pantalla de validación
-        router.push('/menu/validacion');
+        navigation.navigate('Validacion');
     }
 
     const handlePanel = () => {
         // Redirigir a la pantalla de validación
-        router.push('/menu/controlPanel');
+        navigation.navigate('ControlPanel');
     }
 
     const handleReport = () => {
         // Redirigir a la pantalla de validación
-        router.push('/menu/report');
+        navigation.navigate('Report');
     }
 
     return (

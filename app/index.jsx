@@ -1,12 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'expo-router'
 import ScreenWrapper from '../components/ScreenWrapper'
 import { enableScreens } from 'react-native-screens';
 
 enableScreens();
-const Index = () => {
-    const router = useRouter()
+const Index = ({ navigation }) => {
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
@@ -15,14 +13,14 @@ const Index = () => {
 
     useEffect(() => {
         if (isMounted) {
-            router.push('welcome')
+            navigation.navigate('Welcome')
         }
-    }, [isMounted])
+    }, [isMounted, navigation])
 
     return (
         <ScreenWrapper>
             <Text>conectando...</Text>
-            <Pressable title="Bienvenido" onPress={() => router.push('welcome')}></Pressable>
+            <Pressable title="Bienvenido" onPress={() => navigation.navigate('Welcome')}></Pressable>
         </ScreenWrapper>
     )
 }
